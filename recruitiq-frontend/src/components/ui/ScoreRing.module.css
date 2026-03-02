@@ -1,0 +1,31 @@
+.ring {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.track {
+  fill: none;
+  stroke: var(--border2);
+  stroke-width: 7;
+}
+
+.fill {
+  fill: none;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 1.2s cubic-bezier(.4, 0, .2, 1), stroke .3s;
+}
+
+.num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text);
+}

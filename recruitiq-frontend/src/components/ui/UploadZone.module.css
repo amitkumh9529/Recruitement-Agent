@@ -1,0 +1,44 @@
+.zone {
+  position: relative;
+  border: 1.5px dashed var(--border2);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+  background: var(--s1);
+  user-select: none;
+}
+
+.zone:hover,
+.drag {
+  border-color: var(--accent);
+  background: rgba(0, 229, 160, 0.03);
+}
+
+.icon {
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.hint {
+  font-size: .72rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.cta {
+  color: var(--accent);
+  font-size: .68rem;
+}
+
+.fileName {
+  font-size: .72rem;
+  color: var(--accent);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}

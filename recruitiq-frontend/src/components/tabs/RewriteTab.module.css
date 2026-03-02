@@ -1,0 +1,26 @@
+.wrap { display: flex; flex-direction: column; }
+.card { background: var(--s1); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 18px; }
+.cardTitle { font-family: var(--font-display); font-weight: 700; font-size: .95rem; color: var(--text); margin-bottom: 16px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.label { font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); }
+.input {
+  background: var(--s2); border: 1px solid var(--border2); color: var(--text);
+  padding: 9px 12px; border-radius: var(--radius); font-family: var(--font-mono);
+  font-size: .82rem; outline: none; width: 100%; transition: border-color .2s;
+}
+.input:focus { border-color: var(--accent); }
+.input::placeholder { color: var(--text-dim); }
+.textarea { resize: vertical; min-height: 80px; }
+
+.outputHeader {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+}
+.outputLabel { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); }
+
+.output {
+  background: var(--s2); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px; font-size: .76rem; line-height: 1.9; color: var(--text);
+  white-space: pre-wrap; word-break: break-word;
+  max-height: 560px; overflow-y: auto;
+}

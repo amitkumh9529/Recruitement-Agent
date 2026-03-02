@@ -1,0 +1,24 @@
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: .78rem;
+  animation: slideIn .25s ease;
+}
+
+.icon {
+  font-size: .75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.error   { background: rgba(255,77,109,.1);  color: var(--red);   border: 1px solid rgba(255,77,109,.2);  }
+.success { background: rgba(0,229,160,.08);  color: var(--green); border: 1px solid rgba(0,229,160,.16); }
+.info    { background: rgba(77,159,255,.08); color: var(--blue);  border: 1px solid rgba(77,159,255,.15); }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

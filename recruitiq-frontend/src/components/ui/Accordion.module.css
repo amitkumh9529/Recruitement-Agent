@@ -1,0 +1,73 @@
+.item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.header {
+  width: 100%;
+  padding: 13px 16px;
+  background: var(--s2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  transition: background .2s;
+  text-align: left;
+}
+
+.header:hover { background: rgba(0, 229, 160, 0.04); }
+
+.title {
+  font-size: .86rem;
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+.arrow {
+  font-size: .7rem;
+  color: var(--accent);
+  transition: transform .2s;
+  flex-shrink: 0;
+}
+
+.body {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+  animation: fadeIn .2s ease;
+}
+
+.desc {
+  font-size: .8rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.list li {
+  font-size: .8rem;
+  color: var(--text);
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: .68rem;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

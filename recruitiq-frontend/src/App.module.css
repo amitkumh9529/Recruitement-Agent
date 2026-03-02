@@ -1,0 +1,94 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  flex: 1;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Tab navigation ── */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  background: var(--bg);
+  position: sticky;
+  top: 56px;
+  z-index: 100;
+}
+
+.tab {
+  padding: 12px 18px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color .2s, border-color .2s;
+}
+
+.tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.tab:hover:not(.active) { color: var(--text); }
+
+/* ── Loading progress bar ── */
+.progressBar {
+  height: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 45%;
+  background: linear-gradient(90deg, var(--accent), var(--blue), var(--accent));
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ── Content area ── */
+.content {
+  padding: 28px 32px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    padding: 0 16px;
+    overflow-x: auto;
+    top: 56px;
+  }
+
+  .content {
+    padding: 18px 16px;
+  }
+}

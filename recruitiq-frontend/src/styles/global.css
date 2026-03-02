@@ -1,0 +1,111 @@
+/* ─────────────────────────────────────────
+   RecruitIQ — Global Styles
+   Theme: Industrial Terminal / Dark Emerald
+───────────────────────────────────────── */
+
+:root {
+  --bg: #07080a;
+  --s1: #0e1014;
+  --s2: #14161b;
+  --s3: #1c1f26;
+  --border: #252830;
+  --border2: #2e3240;
+
+  --accent: #00e5a0;
+  --accent2: #00b87a;
+  --accent-glow: rgba(0, 229, 160, 0.15);
+  --accent-dim: rgba(0, 229, 160, 0.08);
+
+  --warn: #ff6b35;
+  --blue: #4d9fff;
+
+  --text: #dde2ec;
+  --text-muted: #7c8599;
+  --text-dim: #3d4255;
+
+  --green: #00e5a0;
+  --red: #ff4d6d;
+  --amber: #f59e0b;
+
+  --radius: 6px;
+  --radius-sm: 4px;
+  --radius-lg: 10px;
+
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-accent: 0 0 20px var(--accent-glow);
+
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'Inconsolata', monospace;
+  --font-serif: 'Lora', serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-mono);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Ambient glow background */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 80% 10%, rgba(0, 229, 160, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(77, 159, 255, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+/* ── Animations ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes progressSlide {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+.fade-up  { animation: fadeUp  0.4s ease both; }
+.fade-in  { animation: fadeIn  0.3s ease both; }

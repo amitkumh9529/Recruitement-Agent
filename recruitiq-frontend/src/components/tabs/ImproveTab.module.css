@@ -1,0 +1,15 @@
+.wrap { display: flex; flex-direction: column; }
+.card { background: var(--s1); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 18px; }
+.cardTitle { font-family: var(--font-display); font-weight: 700; font-size: .95rem; color: var(--text); margin-bottom: 14px; }
+.checks { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.chk { display: flex; align-items: center; gap: 6px; font-size: .78rem; color: var(--text-muted); cursor: pointer; }
+.chk input { accent-color: var(--accent); cursor: pointer; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.label { font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); }
+.input {
+  background: var(--s2); border: 1px solid var(--border2); color: var(--text);
+  padding: 9px 12px; border-radius: var(--radius); font-family: var(--font-mono);
+  font-size: .82rem; outline: none; width: 100%; transition: border-color .2s;
+}
+.input:focus { border-color: var(--accent); }
+.input::placeholder { color: var(--text-dim); }

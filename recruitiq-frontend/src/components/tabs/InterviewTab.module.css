@@ -1,0 +1,36 @@
+.wrap { display: flex; flex-direction: column; gap: 0; }
+
+.card {
+  background: var(--s1); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px; margin-bottom: 18px;
+}
+.cardTitle { font-family: var(--font-display); font-weight: 700; font-size: .95rem; color: var(--text); margin-bottom: 16px; }
+
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.label { font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); }
+
+.select {
+  background: var(--s2); border: 1px solid var(--border2);
+  color: var(--text); padding: 9px 12px; border-radius: var(--radius);
+  font-family: var(--font-mono); font-size: .82rem; outline: none; cursor: pointer;
+  transition: border-color .2s;
+}
+.select:focus { border-color: var(--accent); }
+.select option { background: var(--s2); }
+
+.checks { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.chk { display: flex; align-items: center; gap: 6px; font-size: .78rem; color: var(--text-muted); cursor: pointer; }
+.chk input { accent-color: var(--accent); cursor: pointer; width: 12px; height: 12px; }
+
+.qcard {
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 18px; margin-bottom: 10px;
+  transition: border-color .2s, background .2s;
+  animation: fadeUp .35s ease both;
+}
+.qcard:hover { border-color: var(--accent); background: rgba(0,229,160,.02); }
+.qtype { font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 7px; }
+.qtext { font-size: .86rem; color: var(--text); line-height: 1.6; font-family: var(--font-serif); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }

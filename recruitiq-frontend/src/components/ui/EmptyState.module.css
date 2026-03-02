@@ -1,0 +1,32 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 20px;
+  text-align: center;
+  animation: fadeIn .3s ease;
+}
+
+.icon {
+  font-size: 2.8rem;
+  margin-bottom: 14px;
+  opacity: .25;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 7px;
+  font-weight: 700;
+}
+
+.desc {
+  font-size: .76rem;
+  color: var(--text-dim);
+  max-width: 280px;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
