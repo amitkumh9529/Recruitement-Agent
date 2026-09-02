@@ -1,0 +1,18 @@
+
+```text
+# requirements.txt
+# Core dependencies for local development and testing
+confluent-kafka>=2.3.0
+faker>=22.0.0
+dbt-databricks>=1.7.0
+great-expectations>=0.18.0
+mlflow>=2.10.0
+xgboost>=2.0.0
+scikit-learn>=1.4.0
+pandas>=2.0.0
+streamlit>=1.30.0
+databricks-sql-connector>=3.0.0
+plotly>=5.18.0
+python-dotenv>=1.0.0
+pytest>=8.0.0
+jsonschema>=4.21.0
