@@ -1,0 +1,21 @@
+# databricks/jobs/feature_job.yml
+name: fraud-feature-engineering
+tasks:
+  - task_key: feature_engineering
+    notebook_task:
+      notebook_path: /Repos/fraud-detection/databricks/notebooks/feature_engineering
+      base_parameters:
+        bronze_table: "fraud_detection.bronze.transactions"
+        silver_table: "fraud_detection.silver.transactions_features"
+        feature_table: "fraud_detection.feature_store.customer_features"
+    job_cluster_key: main
+    libraries:
+      - pypi:
+          package: "databricks-feature-store"
+
+job_clusters:
+  - job_cluster_key: main
+    new_cluster:
+      spark_version: "14.3.x-scala2.12"
+      node_type_id: "r5.xlarge"
+      num_workers: 2

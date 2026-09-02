@@ -1,0 +1,39 @@
+# databricks/jobs/streaming_job.yml
+# Databricks job configuration for streaming ingestion
+name: fraud-streaming-ingestion
+tasks:
+  - task_key: bronze_ingestion
+    notebook_task:
+      notebook_path: /Repos/fraud-detection/databricks/notebooks/bronze_ingestion
+      base_parameters:
+        kafka_bootstrap_servers: "b-1.msk-cluster.abc123.kafka.us-east-1.amazonaws.com:9094"
+        kafka_topic: "transactions.raw"
+        bronze_table: "fraud_detection.bronze.transactions"
+        checkpoint_path: "/mnt/delta/checkpoints/bronze_transactions"
+    cluster_key: main
+    libraries:
+      - pypi:
+          package: "confluent-kafka"
+  - task_key: model_scoring
+    depends_on:
+      - task_key: bronze_ingestion
+    notebook_task:
+      notebook_path: /Repos/fraud-detection/databricks/notebooks/model_scoring
+      base_parameters:
+        kafka_bootstrap_servers: "b-1.msk-cluster.abc123.kafka.us-east-1.amazonaws.com:9094"
+        kafka_topic: "transactions.raw"
+        model_name: "fraud_xgboost"
+        scored_table: "fraud_detection.silver.scored_transactions"
+        checkpoint_path: "/mnt/delta/checkpoints/scoring"
+    cluster_key: main
+
+job_clusters:
+  - job_cluster_key: main
+    new_cluster:
+      spark_version: "14.3.x-scala2.12"
+      node_type_id: "i3.xlarge"
+      num_workers: 2
+      spark_conf:
+        "spark.databricks.delta.preview.enabled": "true"
+        "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension"
+        "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog"

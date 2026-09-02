@@ -1,0 +1,19 @@
+{
+  "name": "fraud-detection-endpoint",
+  "model_name": "fraud_xgboost",
+  "model_version": "1",
+  "workload_type": "CPU",
+  "scale_to_zero_enabled": true,
+  "serving_config": {
+    "min_provisioned_throughput": 0,
+    "max_provisioned_throughput": 100
+  },
+  "traffic_config": {
+    "routes": [
+      {
+        "served_model_name": "fraud_xgboost",
+        "traffic_percentage": 100
+      }
+    ]
+  }
+}

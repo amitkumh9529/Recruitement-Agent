@@ -1,0 +1,27 @@
+# databricks/jobs/training_job.yml
+name: fraud-model-training
+tasks:
+  - task_key: train_model
+    notebook_task:
+      notebook_path: /Repos/fraud-detection/databricks/notebooks/train_fraud_model
+      base_parameters:
+        feature_table: "fraud_detection.feature_store.customer_features"
+        model_name: "fraud_xgboost"
+        experiment_name: "/Shared/fraud-detection"
+    job_cluster_key: main
+    libraries:
+      - pypi:
+          package: "mlflow"
+      - pypi:
+          package: "xgboost"
+      - pypi:
+          package: "scikit-learn"
+      - pypi:
+          package: "databricks-feature-store"
+
+job_clusters:
+  - job_cluster_key: main
+    new_cluster:
+      spark_version: "14.3.x-scala2.12"
+      node_type_id: "r5.xlarge"
+      num_workers: 2
