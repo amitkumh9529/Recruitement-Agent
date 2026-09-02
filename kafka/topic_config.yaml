@@ -1,0 +1,60 @@
+# kafka/topic_config.yaml
+# Configuration for Kafka topics used in the fraud detection platform.
+# The topic names are generated from the project and environment variables,
+# but here we define their settings.
+
+topics:
+  - name: "transactions.raw"
+    partitions: 12
+    replication_factor: 3
+    config:
+      # Retention: keep raw events for 7 days (604800000 ms)
+      retention.ms: 604800000
+      # Compact? No, it's an event stream (delete)
+      cleanup.policy: "delete"
+      # Enable idempotence for producers
+      enable.idempotence: "true"
+      # Compression for producers
+      compression.type: "snappy"
+      # Minimum in-sync replicas
+      min.insync.replicas: 2
+      # Max message size (1 MB)
+      max.message.bytes: 1048576
+      # Allow auto creation of topics? We set to false in broker config,
+      # but we ensure topic is created explicitly.
+      # No key required, but we use transaction_id as key for partitioning
+      # Key will be set by producer
+      # Additional configs:
+      # segment.ms: 604800000 (7 days)
+      # segment.bytes: 1073741824 (1 GB)
+
+  - name: "transactions.scored"
+    partitions: 12
+    replication_factor: 3
+    config:
+      retention.ms: 604800000
+      cleanup.policy: "delete"
+      enable.idempotence: "true"
+      compression.type: "snappy"
+      min.insync.replicas: 2
+      max.message.bytes: 1048576
+
+  - name: "transactions.alerts"
+    partitions: 6
+    replication_factor: 3
+    config:
+      retention.ms: 2592000000   # 30 days for alerts
+      cleanup.policy: "delete"
+      enable.idempotence: "true"
+      compression.type: "snappy"
+      min.insync.replicas: 2
+      max.message.bytes: 1048576
+
+# Consumer groups (if needed for monitoring)
+consumer_groups:
+  - name: "databricks-streaming"
+    topics: ["transactions.raw"]
+    config:
+      auto.offset.reset: "latest"
+      enable.auto.commit: "false"
+      isolation.level: "read_committed"

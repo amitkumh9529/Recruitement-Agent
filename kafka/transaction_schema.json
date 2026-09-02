@@ -1,0 +1,97 @@
+{
+  "type": "record",
+  "name": "Transaction",
+  "namespace": "com.frauddetection.transactions",
+  "fields": [
+    {
+      "name": "transaction_id",
+      "type": "string",
+      "doc": "Unique identifier for the transaction (UUID)"
+    },
+    {
+      "name": "customer_id",
+      "type": "string",
+      "doc": "Customer unique identifier"
+    },
+    {
+      "name": "merchant_id",
+      "type": "string",
+      "doc": "Merchant unique identifier"
+    },
+    {
+      "name": "merchant_category",
+      "type": "string",
+      "doc": "Merchant category code (MCC) or description"
+    },
+    {
+      "name": "amount",
+      "type": "double",
+      "doc": "Transaction amount in currency units (e.g., USD)"
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "doc": "ISO 4217 currency code (e.g., USD, EUR)"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "logicalType": "timestamp-millis",
+      "doc": "Event timestamp in milliseconds since epoch"
+    },
+    {
+      "name": "location",
+      "type": {
+        "type": "record",
+        "name": "Location",
+        "fields": [
+          {"name": "latitude", "type": "double"},
+          {"name": "longitude", "type": "double"},
+          {"name": "country", "type": "string"},
+          {"name": "city", "type": "string"}
+        ]
+      },
+      "doc": "Geographic location of the transaction"
+    },
+    {
+      "name": "device_id",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Device identifier if available"
+    },
+    {
+      "name": "ip_address",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "IP address of the transaction"
+    },
+    {
+      "name": "card_present",
+      "type": "boolean",
+      "doc": "True if card was physically present"
+    },
+    {
+      "name": "card_type",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Card type (e.g., credit, debit, prepaid)"
+    },
+    {
+      "name": "account_age_days",
+      "type": ["null", "int"],
+      "default": null,
+      "doc": "Age of the customer account in days"
+    },
+    {
+      "name": "transaction_type",
+      "type": "string",
+      "doc": "Type of transaction (purchase, withdrawal, transfer, etc.)"
+    },
+    {
+      "name": "is_fraud",
+      "type": ["null", "boolean"],
+      "default": null,
+      "doc": "Ground truth label (only available after investigation; null in real-time)"
+    }
+  ]
+}
